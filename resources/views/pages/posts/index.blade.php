@@ -50,7 +50,7 @@
               <img src="{{ $post->user->profileImg_url }}" alt="プロフィール画像"><span>{{ $post->user->name }}</span>
             @else
               <img src="/images/no-image.png" alt="プロフィール画像">
-            @elseif
+            @endif
           </a>
         </div>
         <p class="date">{{ $post->updated_at->format('Y/m/d') }}</p>
