@@ -11720,6 +11720,13 @@ html {
   }
 }
 
+@media (max-width: 550px) {
+  .loginPage .form-contena,
+  .registerPage .form-contena {
+    width: 350px;
+  }
+}
+
 @media (min-width: 800px) {
   .showPage .card-box {
     display: flex;

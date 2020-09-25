@@ -690,6 +690,14 @@ html {
   }
 }
 
+@media (max-width:550px) {
+  .loginPage, .registerPage {
+    .form-contena {
+      width: 350px;
+    }
+  }
+}
+
 @media (min-width:800px) {
   .showPage {
     .card-box {
