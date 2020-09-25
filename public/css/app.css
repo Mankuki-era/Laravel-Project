@@ -10918,7 +10918,7 @@ html {
 
 .loginPage .form-contena,
 .registerPage .form-contena {
-  width: 500px;
+  width: 350px;
   margin: 50px auto 0;
 }
 
@@ -11169,7 +11169,7 @@ html {
 
 .createPage .form-contena,
 .post-editPage .form-contena {
-  width: 500px;
+  width: 350px;
   margin: 40px auto 0;
 }
 
@@ -11178,14 +11178,10 @@ html {
   opacity: 0.5;
 }
 
-.createPage .form-contena .image-form,
-.post-editPage .form-contena .image-form {
-  display: flex;
-}
-
 .createPage .form-contena .image-form .form-items,
 .post-editPage .form-contena .image-form .form-items {
   width: 260px;
+  margin-bottom: 5px;
 }
 
 .createPage .form-contena .image-form .preview,
@@ -11473,7 +11469,7 @@ html {
 }
 
 .user-showPage .userShow-contena .profile {
-  padding: 0 150px;
+  padding: 0 80px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -11493,9 +11489,16 @@ html {
   margin-left: 20px;
 }
 
-.user-showPage .userShow-contena .profile .profile-secondary .user-name,
 .user-showPage .userShow-contena .profile .profile-secondary .sub-content {
   display: flex;
+}
+
+.user-showPage .userShow-contena .profile .profile-secondary .user-name {
+  margin-bottom: 20px;
+}
+
+.user-showPage .userShow-contena .profile .profile-secondary .user-name p {
+  margin-bottom: 5px;
 }
 
 .user-showPage .userShow-contena .profile .profile-secondary .user-name .name {
@@ -11506,7 +11509,7 @@ html {
 .user-showPage .userShow-contena .profile .profile-secondary .user-name .edit-link a {
   text-decoration: none;
   font-size: 11px;
-  margin-left: 20px;
+  margin-left: 0;
   padding: 5px;
   color: #333;
   background: #eee;
@@ -11643,16 +11646,12 @@ html {
 }
 
 .profile-editPage .form-contena {
-  width: 500px;
+  width: 350px;
   margin: 40px auto 0;
 }
 
 .profile-editPage .form-contena .form-items input:not(:focus) {
   opacity: 0.5;
-}
-
-.profile-editPage .form-contena .image-form {
-  display: flex;
 }
 
 .profile-editPage .form-contena .image-form .form-items {
@@ -11720,10 +11719,21 @@ html {
   }
 }
 
-@media (max-width: 550px) {
+@media (min-width: 550px) {
   .loginPage .form-contena,
-  .registerPage .form-contena {
-    width: 350px;
+  .registerPage .form-contena,
+  .createPage .form-contena,
+  .post-editPage .form-contena,
+  .profile-editPage .form-contena {
+    width: 500px;
+  }
+
+  .loginPage .form-contena .image-form,
+  .registerPage .form-contena .image-form,
+  .createPage .form-contena .image-form,
+  .post-editPage .form-contena .image-form,
+  .profile-editPage .form-contena .image-form {
+    display: flex;
   }
 }
 
@@ -11740,6 +11750,24 @@ html {
   .showPage .card-box .comment-area {
     width: 35%;
     margin-top: 0;
+  }
+}
+
+@media (min-width: 970px) {
+  .user-showPage .userShow-contena .profile .profile-secondary .user-name {
+    display: flex;
+  }
+
+  .user-showPage .userShow-contena .profile .profile-secondary .user-name {
+    margin-bottom: 0;
+  }
+
+  .user-showPage .userShow-contena .profile .profile-secondary .user-name .name {
+    margin-bottom: 10px;
+  }
+
+  .user-showPage .userShow-contena .profile .profile-secondary .user-name .edit-link a {
+    margin-left: 20px;
   }
 }
 

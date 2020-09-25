@@ -46,7 +46,11 @@
       <div class="card-header">
         <div class="user">
           <a href="{{ route('users.show', $post->user->id) }}" class="auth-name">
-            <img src="{{ $post->user->profileImg_url }}" alt="プロフィール画像"><span>{{ $post->user->name }}</span>
+            @if(isset($post->user->profileImg_url)) 
+              <img src="{{ $post->user->profileImg_url }}" alt="プロフィール画像"><span>{{ $post->user->name }}</span>
+            @else
+              <img src="/images/no-image.png" alt="プロフィール画像">
+            @elseif
           </a>
         </div>
         <p class="date">{{ $post->updated_at->format('Y/m/d') }}</p>

@@ -26,7 +26,7 @@ html {
 
 .loginPage, .registerPage {
   .form-contena {
-    width: 500px;
+    width: 350px;
     margin: 50px auto 0;
     .form-items {
       position: relative;
@@ -235,7 +235,7 @@ html {
 
 .createPage, .post-editPage {
   .form-contena {
-    width: 500px;
+    width: 350px;
     margin: 40px auto 0;
     .form-items {
       input:not(:focus) {
@@ -243,9 +243,10 @@ html {
       }
     }
     .image-form {
-      display: flex;
+      // display: flex;
       .form-items {
         width: 260px;
+        margin-bottom: 5px;
       }
       .preview {
         max-width: 100px;
@@ -496,7 +497,7 @@ html {
     width: 70%;
     margin: 50px auto 0;
     .profile {
-      padding: 0 150px;
+      padding: 0 80px;
       display: flex;
       align-items: center;
       justify-content: space-around;
@@ -510,10 +511,14 @@ html {
       }
       .profile-secondary {
         margin-left: 20px;
-        .user-name, .sub-content {
+        .sub-content {
           display: flex;
         }
         .user-name {
+          margin-bottom: 20px;
+          p {
+            margin-bottom: 5px;
+          }
           .name {
             font-weight: bold;
             font-size: 16px;
@@ -522,7 +527,7 @@ html {
             a {
               text-decoration: none;
               font-size: 11px;
-              margin-left: 20px;
+              margin-left: 0;
               padding: 5px;
               color: #333;
               background: #eee;
@@ -647,7 +652,7 @@ html {
 
 .profile-editPage {
   .form-contena {
-    width: 500px;
+    width: 350px;
     margin: 40px auto 0;
     .form-items {
       input:not(:focus) {
@@ -655,7 +660,6 @@ html {
       }
     }
     .image-form {
-      display: flex;
       .form-items {
         width: 260px;
       }
@@ -690,10 +694,13 @@ html {
   }
 }
 
-@media (max-width:550px) {
-  .loginPage, .registerPage {
+@media (min-width:550px) {
+  .loginPage, .registerPage, .createPage, .post-editPage, .profile-editPage {
     .form-contena {
-      width: 350px;
+      width: 500px;
+      .image-form {
+        display: flex;
+      }
     }
   }
 }
@@ -709,6 +716,31 @@ html {
       .comment-area {
         width: 35%;
         margin-top: 0;
+      }
+    }
+  }
+}
+
+@media (min-width:970px) {
+  .user-showPage {
+    .userShow-contena {
+      .profile {
+        .profile-secondary {
+          .user-name {
+            display: flex;
+          }
+          .user-name {
+            margin-bottom: 0;
+            .name {
+              margin-bottom: 10px;
+            }
+            .edit-link {
+              a {
+                margin-left: 20px;
+              }
+            }
+          }
+        }
       }
     }
   }
