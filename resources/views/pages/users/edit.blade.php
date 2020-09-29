@@ -6,12 +6,12 @@
       プロフィール編集画面
   </h1>
 </div>
+@if (session('status'))
+  <div class="alert alert-success session-msg" role="alert">
+      {{ session('status') }}
+  </div>
+@endif
 <div class="profile-editPage">
-  @if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-    </div>
-  @endif
   <div class="form-contena">
     <form method="POST" action="{{ route('users.update', $user) }}" enctype="multipart/form-data">
       @csrf

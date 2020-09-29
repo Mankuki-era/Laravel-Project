@@ -6,12 +6,12 @@
       投稿作成画面
   </h1>
 </div>
+@if (session('status'))
+  <div class="alert alert-success session-msg" role="alert">
+      {{ session('status') }}
+  </div>
+@endif
 <div class="createPage">
-  @if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-    </div>
-  @endif
   @if ($errors->any())
     <div class="alert alert-danger">
     <ul>

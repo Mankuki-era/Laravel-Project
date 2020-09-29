@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/posts/{post}/like', 'LikesController@like');
 Route::post('/posts/{post}/unlike', 'LikesController@unlike');
 Route::post('/posts/{post}/comment', 'CommentsController@store');
+Route::post('/users/{user}/follow', 'FollowingsController@follow');
+Route::post('/users/{user}/unfollow', 'FollowingsController@unfollow');

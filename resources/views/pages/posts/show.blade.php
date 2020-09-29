@@ -6,13 +6,12 @@
       投稿詳細画面
   </h1>
 </div>
+@if (session('status'))
+  <div class="alert alert-success session-msg" role="alert">
+      {{ session('status') }}
+  </div>
+@endif
 <div class="showPage">
-  @if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-    </div>
-  @endif
-
   <div class="card-box">
     <div class="card-item">
     <?php 

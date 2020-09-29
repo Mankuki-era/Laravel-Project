@@ -10907,18 +10907,82 @@ html {
   background: #5bc8ac;
   height: 80px;
   padding: 0 20px;
+  display: flex;
+  align-items: center;
 }
 
 .pageTitle h1 {
+  flex: 1;
   line-height: 80px;
   font-size: 25px;
   font-weight: bold;
   color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+.pageTitle .search-form {
+  position: relative;
+  width: 200px;
+  height: 35px;
+}
+
+.pageTitle .search-form .search-input {
+  height: 100%;
+  width: 100%;
+  padding: 0 35px 0 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background: #eee;
+}
+
+.pageTitle .search-form .search-btn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  background: none;
+  color: #666;
+  border: none;
+  font-size: 20px;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.pageTitle .search-form .search-btn:hover {
+  color: #7fbfff;
+}
+
+.pageTitle .back-link {
+  list-style: none;
+  margin: 0;
+  padding: 5px 10px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.pageTitle .back-link li a {
+  text-decoration: none;
+}
+
+.session-msg {
+  margin: 0;
+  text-align: center;
+  color: #299177;
+  font-weight: bold;
+}
+
+.error-msg {
+  margin: 0;
+  text-align: center;
+  background: rgba(255, 0, 0, 0.089);
+  color: #e2264d;
+  font-weight: bold;
 }
 
 .loginPage .form-contena,
 .registerPage .form-contena {
-  width: 350px;
+  width: 320px;
   margin: 50px auto 0;
 }
 
@@ -10930,7 +10994,7 @@ html {
 .loginPage .form-contena .form-items .icon,
 .registerPage .form-contena .form-items .icon {
   position: absolute;
-  top: 36%;
+  top: 14px;
   left: 11px;
   color: #3490dc;
 }
@@ -10946,22 +11010,22 @@ html {
 }
 
 .indexPage {
-  margin-top: 80px;
+  margin: 80px auto 0;
+  width: 70%;
 }
 
-.indexPage .tag-message {
-  width: 80%;
+.indexPage .message {
   margin: 10px auto 0;
 }
 
-.indexPage .tag-message p {
+.indexPage .message p {
   padding: 10px 10px;
   background: #eee;
   color: #4b4b4b;
   text-align: center;
 }
 
-.indexPage .tag-message p span {
+.indexPage .message p span {
   color: #333;
   font-weight: bold;
 }
@@ -10970,12 +11034,20 @@ html {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   justify-content: center;
-  width: 80%;
-  margin: 10px auto 0;
   gap: 10px;
 }
 
-.indexPage .card-box .card-item {
+.indexPage .card {
+  width: 100%;
+}
+
+.indexPage .card-box,
+.indexPage .card {
+  margin: 10px auto 0;
+}
+
+.indexPage .card-box .card-item,
+.indexPage .card .card-item {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
   border-radius: 5px;
   min-height: 350px;
@@ -10983,23 +11055,27 @@ html {
   padding-bottom: 35px;
 }
 
-.indexPage .card-box .card-item .card-header {
+.indexPage .card-box .card-item .card-header,
+.indexPage .card .card-item .card-header {
   padding: 0;
   height: 37px;
   display: flex;
   justify-content: space-between;
 }
 
-.indexPage .card-box .card-item .card-header .user {
+.indexPage .card-box .card-item .card-header .user,
+.indexPage .card .card-item .card-header .user {
   padding: 5px 10px;
 }
 
-.indexPage .card-box .card-item .card-header .user .auth-name {
+.indexPage .card-box .card-item .card-header .user .auth-name,
+.indexPage .card .card-item .card-header .user .auth-name {
   display: block;
   text-decoration: none;
 }
 
-.indexPage .card-box .card-item .card-header .user .auth-name img {
+.indexPage .card-box .card-item .card-header .user .auth-name img,
+.indexPage .card .card-item .card-header .user .auth-name img {
   width: 25px;
   height: 25px;
   -o-object-fit: cover;
@@ -11007,12 +11083,14 @@ html {
   border-radius: 50%;
 }
 
-.indexPage .card-box .card-item .card-header .user .auth-name span {
+.indexPage .card-box .card-item .card-header .user .auth-name span,
+.indexPage .card .card-item .card-header .user .auth-name span {
   margin-left: 10px;
   font-size: 15px;
 }
 
-.indexPage .card-box .card-item .card-header .date {
+.indexPage .card-box .card-item .card-header .date,
+.indexPage .card .card-item .card-header .date {
   text-align: center;
   line-height: 37px;
   color: #aaa;
@@ -11020,16 +11098,19 @@ html {
   font-size: 11px;
 }
 
-.indexPage .card-box .card-item .image {
+.indexPage .card-box .card-item .image,
+.indexPage .card .card-item .image {
   display: inline-block;
 }
 
-.indexPage .card-box .card-item .image img {
+.indexPage .card-box .card-item .image img,
+.indexPage .card .card-item .image img {
   max-width: 100%;
   height: auto;
 }
 
-.indexPage .card-box .card-item .icons {
+.indexPage .card-box .card-item .icons,
+.indexPage .card .card-item .icons {
   margin: 10px 10px 0;
   display: flex;
   justify-content: space-between;
@@ -11037,93 +11118,110 @@ html {
   border-bottom: 1px solid lightgray;
 }
 
-.indexPage .card-box .card-item .icons .left-icons {
+.indexPage .card-box .card-item .icons .left-icons,
+.indexPage .card .card-item .icons .left-icons {
   display: flex;
 }
 
-.indexPage .card-box .card-item .icons .left-icons .heart {
+.indexPage .card-box .card-item .icons .left-icons .heart,
+.indexPage .card .card-item .icons .left-icons .heart {
   padding-right: 10px;
 }
 
-.indexPage .card-box .card-item .icons .left-icons .heart button {
+.indexPage .card-box .card-item .icons .left-icons .heart button,
+.indexPage .card .card-item .icons .left-icons .heart button {
   border: none;
   outline: none;
   background: transparent;
   padding: 0;
 }
 
-.indexPage .card-box .card-item .icons .left-icons .heart button .heart-icon {
+.indexPage .card-box .card-item .icons .left-icons .heart button .heart-icon,
+.indexPage .card .card-item .icons .left-icons .heart button .heart-icon {
   vertical-align: -7%;
   color: #aaa;
 }
 
-.indexPage .card-box .card-item .icons .left-icons .heart button .red-icon {
+.indexPage .card-box .card-item .icons .left-icons .heart button .red-icon,
+.indexPage .card .card-item .icons .left-icons .heart button .red-icon {
   -webkit-animation: heartAnimation 0.2s;
           animation: heartAnimation 0.2s;
   color: #e2264d;
 }
 
-.indexPage .card-box .card-item .icons .left-icons .heart button .good {
+.indexPage .card-box .card-item .icons .left-icons .heart button .good,
+.indexPage .card .card-item .icons .left-icons .heart button .good {
   color: #aaa;
   padding-left: 5px;
 }
 
-.indexPage .card-box .card-item .icons .left-icons .edit {
+.indexPage .card-box .card-item .icons .left-icons .edit,
+.indexPage .card .card-item .icons .left-icons .edit {
   padding-right: 10px;
 }
 
-.indexPage .card-box .card-item .icons .left-icons .edit .edit-link {
+.indexPage .card-box .card-item .icons .left-icons .edit .edit-link,
+.indexPage .card .card-item .icons .left-icons .edit .edit-link {
   text-decoration: none;
   display: inline-block;
 }
 
-.indexPage .card-box .card-item .icons .left-icons .edit .edit-link .edit-icon {
+.indexPage .card-box .card-item .icons .left-icons .edit .edit-link .edit-icon,
+.indexPage .card .card-item .icons .left-icons .edit .edit-link .edit-icon {
   vertical-align: baseline;
   color: #aaa;
 }
 
-.indexPage .card-box .card-item .icons .left-icons .delete form button {
+.indexPage .card-box .card-item .icons .left-icons .delete form button,
+.indexPage .card .card-item .icons .left-icons .delete form button {
   border: none;
   outline: none;
   background: transparent;
   padding: 0;
 }
 
-.indexPage .card-box .card-item .icons .left-icons .delete form button .delete-icon {
+.indexPage .card-box .card-item .icons .left-icons .delete form button .delete-icon,
+.indexPage .card .card-item .icons .left-icons .delete form button .delete-icon {
   vertical-align: baseline;
   color: #aaa;
 }
 
-.indexPage .card-box .card-item .body {
+.indexPage .card-box .card-item .body,
+.indexPage .card .card-item .body {
   padding: 0 10px;
   width: 93%;
   margin: 0 auto;
 }
 
-.indexPage .card-box .card-item .body h1 {
+.indexPage .card-box .card-item .body h1,
+.indexPage .card .card-item .body h1 {
   font-size: 14px;
   font-weight: bold;
   margin: 10px 0 0;
 }
 
-.indexPage .card-box .card-item .body .content {
+.indexPage .card-box .card-item .body .content,
+.indexPage .card .card-item .body .content {
   margin-top: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.indexPage .card-box .card-item .body p {
+.indexPage .card-box .card-item .body p,
+.indexPage .card .card-item .body p {
   font-size: 12px;
   margin: 0;
 }
 
-.indexPage .card-box .card-item .body .tag-buttons {
+.indexPage .card-box .card-item .body .tag-buttons,
+.indexPage .card .card-item .body .tag-buttons {
   height: 20px;
   margin-top: 5px;
 }
 
-.indexPage .card-box .card-item .body .tag-buttons ul {
+.indexPage .card-box .card-item .body .tag-buttons ul,
+.indexPage .card .card-item .body .tag-buttons ul {
   height: 100%;
   padding: 0;
   margin: 0;
@@ -11131,7 +11229,8 @@ html {
   display: flex;
 }
 
-.indexPage .card-box .card-item .body .tag-buttons ul li {
+.indexPage .card-box .card-item .body .tag-buttons ul li,
+.indexPage .card .card-item .body .tag-buttons ul li {
   border: 1px solid lightgray;
   border-radius: 5px;
   text-align: center;
@@ -11139,20 +11238,24 @@ html {
   padding: 0 3px;
 }
 
-.indexPage .card-box .card-item .body .tag-buttons ul li a {
+.indexPage .card-box .card-item .body .tag-buttons ul li a,
+.indexPage .card .card-item .body .tag-buttons ul li a {
   text-decoration: none;
   font-size: 11px;
 }
 
-.indexPage .card-box .card-item .body .tag-buttons ul li:not(:first-of-type) {
+.indexPage .card-box .card-item .body .tag-buttons ul li:not(:first-of-type),
+.indexPage .card .card-item .body .tag-buttons ul li:not(:first-of-type) {
   margin-left: 3px;
 }
 
-.indexPage .card-box .card-item .body .tag-buttons ul li:hover {
+.indexPage .card-box .card-item .body .tag-buttons ul li:hover,
+.indexPage .card .card-item .body .tag-buttons ul li:hover {
   background: #ddd;
 }
 
-.indexPage .card-box .card-item .sub-body {
+.indexPage .card-box .card-item .sub-body,
+.indexPage .card .card-item .sub-body {
   border-top: 1px solid lightgray;
   position: absolute;
   display: block;
@@ -11162,7 +11265,8 @@ html {
   width: calc(100% - 20px);
 }
 
-.indexPage .card-box .card-item .sub-body a {
+.indexPage .card-box .card-item .sub-body a,
+.indexPage .card .card-item .sub-body a {
   float: right;
   font-size: 12px;
 }
@@ -11186,7 +11290,7 @@ html {
 
 .createPage .form-contena .image-form .preview,
 .post-editPage .form-contena .image-form .preview {
-  max-width: 100px;
+  max-width: 150px;
   height: auto;
 }
 
@@ -11469,7 +11573,7 @@ html {
 }
 
 .user-showPage .userShow-contena .profile {
-  padding: 0 80px;
+  padding: 0 15vw;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -11499,6 +11603,7 @@ html {
 
 .user-showPage .userShow-contena .profile .profile-secondary .user-name p {
   margin-bottom: 5px;
+  margin-left: 8px;
 }
 
 .user-showPage .userShow-contena .profile .profile-secondary .user-name .name {
@@ -11517,6 +11622,35 @@ html {
   border-radius: 5px;
 }
 
+.user-showPage .userShow-contena .profile .profile-secondary .user-name .follow-btn,
+.user-showPage .userShow-contena .profile .profile-secondary .user-name .unfollow-btn {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  font-size: 13px;
+  display: inline-block;
+  border-radius: 25px;
+  padding: 4px 10px;
+  width: 100px;
+}
+
+.user-showPage .userShow-contena .profile .profile-secondary .user-name .follow-btn {
+  color: #09f;
+  border: 1px solid #09f;
+  background-color: #fff;
+}
+
+.user-showPage .userShow-contena .profile .profile-secondary .user-name .unfollow-btn {
+  -webkit-animation: followAnimation 0.2s;
+          animation: followAnimation 0.2s;
+  color: #fff;
+  background-color: #09f;
+}
+
 .user-showPage .userShow-contena .profile .profile-secondary .sub-content {
   margin: 10px 0;
 }
@@ -11525,30 +11659,56 @@ html {
   margin-left: 15px;
 }
 
+.user-showPage .userShow-contena .no-posts {
+  margin-top: 80px;
+}
+
+.user-showPage .userShow-contena .no-posts p {
+  color: #aaa;
+  text-align: center;
+}
+
+.user-showPage .userShow-contena .no-posts p .info-icon {
+  vertical-align: -2px;
+}
+
+.user-showPage .userShow-contena .user-post {
+  width: 100%;
+}
+
 .user-showPage .userShow-contena .user-posts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   justify-content: center;
-  margin: 80px auto 0;
   gap: 10px;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item {
+.user-showPage .userShow-contena .user-posts,
+.user-showPage .userShow-contena .user-post {
+  margin-top: 80px;
+}
+
+.user-showPage .userShow-contena .user-posts .card-item,
+.user-showPage .userShow-contena .user-post .card-item {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
   padding-bottom: 5px;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .image {
+.user-showPage .userShow-contena .user-posts .card-item .image,
+.user-showPage .userShow-contena .user-post .card-item .image {
+  width: 100%;
   display: inline-block;
   position: relative;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .image img {
-  max-width: 100%;
+.user-showPage .userShow-contena .user-posts .card-item .image img,
+.user-showPage .userShow-contena .user-post .card-item .image img {
+  width: 100%;
   height: auto;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .image .mask {
+.user-showPage .userShow-contena .user-posts .card-item .image .mask,
+.user-showPage .userShow-contena .user-post .card-item .image .mask {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -11559,12 +11719,14 @@ html {
   transition: all 0.2s ease;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .image .mask .caption {
+.user-showPage .userShow-contena .user-posts .card-item .image .mask .caption,
+.user-showPage .userShow-contena .user-post .card-item .image .mask .caption {
   height: 100%;
   position: relative;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .image .mask .caption p {
+.user-showPage .userShow-contena .user-posts .card-item .image .mask .caption p,
+.user-showPage .userShow-contena .user-post .card-item .image .mask .caption p {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -11574,42 +11736,50 @@ html {
   color: #fff;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .image .mask .caption p span:not(:first-of-type) {
+.user-showPage .userShow-contena .user-posts .card-item .image .mask .caption p span:not(:first-of-type),
+.user-showPage .userShow-contena .user-post .card-item .image .mask .caption p span:not(:first-of-type) {
   margin-left: 10px;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .image:hover .mask {
+.user-showPage .userShow-contena .user-posts .card-item .image:hover .mask,
+.user-showPage .userShow-contena .user-post .card-item .image:hover .mask {
   opacity: 1;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .body {
+.user-showPage .userShow-contena .user-posts .card-item .body,
+.user-showPage .userShow-contena .user-post .card-item .body {
   padding: 0 10px;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .body h1 {
+.user-showPage .userShow-contena .user-posts .card-item .body h1,
+.user-showPage .userShow-contena .user-post .card-item .body h1 {
   font-size: 13px;
   font-weight: bold;
   margin: 10px 0 0;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .body p {
+.user-showPage .userShow-contena .user-posts .card-item .body p,
+.user-showPage .userShow-contena .user-post .card-item .body p {
   font-size: 11px;
   margin: 0;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .body .content {
+.user-showPage .userShow-contena .user-posts .card-item .body .content,
+.user-showPage .userShow-contena .user-post .card-item .body .content {
   margin-top: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .body .tag-buttons {
+.user-showPage .userShow-contena .user-posts .card-item .body .tag-buttons,
+.user-showPage .userShow-contena .user-post .card-item .body .tag-buttons {
   height: 20px;
   margin-top: 5px;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .body .tag-buttons ul {
+.user-showPage .userShow-contena .user-posts .card-item .body .tag-buttons ul,
+.user-showPage .userShow-contena .user-post .card-item .body .tag-buttons ul {
   height: 100%;
   padding: 0;
   margin: 0;
@@ -11617,7 +11787,8 @@ html {
   display: flex;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .body .tag-buttons ul li {
+.user-showPage .userShow-contena .user-posts .card-item .body .tag-buttons ul li,
+.user-showPage .userShow-contena .user-post .card-item .body .tag-buttons ul li {
   border: 1px solid lightgray;
   border-radius: 5px;
   text-align: center;
@@ -11625,20 +11796,24 @@ html {
   padding: 0 3px;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .body .tag-buttons ul li a {
+.user-showPage .userShow-contena .user-posts .card-item .body .tag-buttons ul li a,
+.user-showPage .userShow-contena .user-post .card-item .body .tag-buttons ul li a {
   text-decoration: none;
   font-size: 11px;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .body .tag-buttons ul li:not(:first-of-type) {
+.user-showPage .userShow-contena .user-posts .card-item .body .tag-buttons ul li:not(:first-of-type),
+.user-showPage .userShow-contena .user-post .card-item .body .tag-buttons ul li:not(:first-of-type) {
   margin-left: 3px;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .body .tag-buttons ul li:hover {
+.user-showPage .userShow-contena .user-posts .card-item .body .tag-buttons ul li:hover,
+.user-showPage .userShow-contena .user-post .card-item .body .tag-buttons ul li:hover {
   background: #ddd;
 }
 
-.user-showPage .userShow-contena .user-posts .card-item .body .date {
+.user-showPage .userShow-contena .user-posts .card-item .body .date,
+.user-showPage .userShow-contena .user-post .card-item .body .date {
   font-size: 11px;
   color: #aaa;
   margin-top: 10px;
@@ -11661,6 +11836,136 @@ html {
 .profile-editPage .form-contena .image-form #preview {
   max-width: 100px;
   height: auto;
+}
+
+.user-indexPage {
+  width: 70%;
+  margin: 80px auto 0;
+}
+
+.user-indexPage h2 {
+  background: #eee;
+  font-size: 15px;
+  padding: 10px;
+  text-align: center;
+}
+
+.user-indexPage h2 span {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.user-indexPage .no-posts {
+  margin-top: 80px;
+}
+
+.user-indexPage .no-posts p {
+  color: #aaa;
+  text-align: center;
+}
+
+.user-indexPage .no-posts p .info-icon {
+  vertical-align: -2px;
+}
+
+.user-indexPage .usersCard-box {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  border-radius: 5px;
+}
+
+.user-indexPage .usersCard-box .userCard-item:not(:first-of-type) {
+  border-top: 2px solid #ddd;
+}
+
+.user-indexPage .usersCard-box .userCard-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 5px;
+  min-height: 150px;
+}
+
+.user-indexPage .usersCard-box .userCard-item .profile-img img {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #ddd;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-indexPage .usersCard-box .userCard-item .profile-secondary {
+  margin-left: 15px;
+}
+
+.user-indexPage .usersCard-box .userCard-item .profile-secondary .sub-content {
+  display: flex;
+}
+
+.user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name {
+  margin-bottom: 20px;
+}
+
+.user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name p {
+  margin-bottom: 5px;
+  margin-left: 8px;
+}
+
+.user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name .name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name .edit-link a {
+  text-decoration: none;
+  font-size: 11px;
+  margin-left: 0;
+  padding: 5px;
+  color: #333;
+  background: #eee;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name .follow-btn,
+.user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name .unfollow-btn {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  font-size: 13px;
+  display: inline-block;
+  border-radius: 25px;
+  padding: 4px 10px;
+  width: 100px;
+}
+
+.user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name .follow-btn {
+  color: #09f;
+  border: 1px solid #09f;
+  background-color: #fff;
+}
+
+.user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name .unfollow-btn {
+  -webkit-animation: followAnimation 0.2s;
+          animation: followAnimation 0.2s;
+  color: #fff;
+  background-color: #09f;
+}
+
+.user-indexPage .usersCard-box .userCard-item .profile-secondary .sub-content {
+  margin: 10px 0 7px;
+}
+
+.user-indexPage .usersCard-box .userCard-item .profile-secondary .sub-content p {
+  margin-bottom: 0;
+}
+
+.user-indexPage .usersCard-box .userCard-item .profile-secondary .sub-content p:not(:first-of-type) {
+  margin-left: 15px;
 }
 
 @-webkit-keyframes heartAnimation {
@@ -11719,6 +12024,62 @@ html {
   }
 }
 
+@-webkit-keyframes followAnimation {
+  0% {
+    /* アイコンサイズをもとのより小さくする */
+    transform: scale(0.7);
+  }
+
+  10% {
+    transform: scale(0.8);
+  }
+
+  30% {
+    transform: scale(0.9);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  80% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    /* もとのサイズに戻す */
+    transform: scale(1);
+  }
+}
+
+@keyframes followAnimation {
+  0% {
+    /* アイコンサイズをもとのより小さくする */
+    transform: scale(0.7);
+  }
+
+  10% {
+    transform: scale(0.8);
+  }
+
+  30% {
+    transform: scale(0.9);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  80% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    /* もとのサイズに戻す */
+    transform: scale(1);
+  }
+}
+
 @media (min-width: 550px) {
   .loginPage .form-contena,
   .registerPage .form-contena,
@@ -11734,6 +12095,50 @@ html {
   .post-editPage .form-contena .image-form,
   .profile-editPage .form-contena .image-form {
     display: flex;
+  }
+}
+
+@media (min-width: 790px) {
+  .user-showPage .userShow-contena .user-post {
+    width: 553px;
+  }
+
+  .indexPage .card {
+    width: 553px;
+  }
+
+  .user-indexPage {
+    width: 553px;
+  }
+
+  .user-indexPage .usersCard-box .userCard-item {
+    padding: 0 20px;
+  }
+
+  .user-indexPage .usersCard-box .userCard-item .profile-img img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name {
+    display: flex;
+  }
+
+  .user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name {
+    margin-bottom: 0;
+  }
+
+  .user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name p {
+    margin: 0;
+  }
+
+  .user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name .edit-link a {
+    margin-left: 20px;
+  }
+
+  .user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name .follow-btn,
+  .user-indexPage .usersCard-box .userCard-item .profile-secondary .user-name .unfollow-btn {
+    margin-left: 20px;
   }
 }
 
@@ -11762,11 +12167,16 @@ html {
     margin-bottom: 0;
   }
 
-  .user-showPage .userShow-contena .profile .profile-secondary .user-name .name {
-    margin-bottom: 10px;
+  .user-showPage .userShow-contena .profile .profile-secondary .user-name p {
+    margin: 0;
   }
 
   .user-showPage .userShow-contena .profile .profile-secondary .user-name .edit-link a {
+    margin-left: 20px;
+  }
+
+  .user-showPage .userShow-contena .profile .profile-secondary .user-name .follow-btn,
+  .user-showPage .userShow-contena .profile .profile-secondary .user-name .unfollow-btn {
     margin-left: 20px;
   }
 }

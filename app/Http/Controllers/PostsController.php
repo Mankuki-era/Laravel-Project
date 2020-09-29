@@ -92,6 +92,7 @@ class PostsController extends Controller
                     'user_id' => \Auth::id()
                 ]);
                 $post->tags()->attach($tag_ids);
+                \Session::flash('status', '投稿が完了しました');
                 \DB::commit();
             }catch(\Throwable $e) {
                 \DB::rollback();
@@ -148,7 +149,7 @@ class PostsController extends Controller
     public function edit(Post $post)
     {
         if($post->user != \Auth::user()) {
-            \Session::flash('status', '不正なアクセスです');
+            \Session::flash('error', '不正なアクセスです');
             return redirect(route('posts.index'));
         }
 
@@ -213,6 +214,7 @@ class PostsController extends Controller
                 ]);
                 $post->save();
                 $post->tags()->attach($tag_ids);
+                \Session::flash('status', '投稿を更新しました');
                 \DB::commit();
             } catch(\Throwable $e) {
                 \DB::rollback();
@@ -232,11 +234,11 @@ class PostsController extends Controller
     public function destroy(Post $post)
     {
         if(empty($post->id)) {
-            \Session::flash('status', 'データがありません');
+            \Session::flash('error', 'データがありません');
             return redirect(route('posts.index'));
         }
         elseif($post->user != \Auth::user()) {
-            \Session::flash('status', '不正なアクセスです');
+            \Session::flash('error', '不正なアクセスです');
             return redirect(route('posts.index'));
         }
 
@@ -257,4 +259,14 @@ class PostsController extends Controller
         return redirect(route('posts.index'));
     }
 
+    public function search(Request $request) {
+        $posts = Post::where('title', 'like', "%{$request->search}%")->orWhere('content', 'like', "%{$request->search}%")->get();
+        $search_request = $request->search;
+
+        return view('pages.posts.index', [
+            'posts' => $posts,
+            'search_request' => $search_request,
+            'index_page' => true
+        ]);
+    }
 }

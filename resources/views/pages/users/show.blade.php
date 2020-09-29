@@ -6,12 +6,12 @@
       ユーザー詳細画面
   </h1>
 </div>
+@if (session('status'))
+  <div class="alert alert-success session-msg" role="alert">
+      {{ session('status') }}
+  </div>
+@endif
 <div class="user-showPage">
-  @if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-    </div>
-  @endif
   <div class="userShow-contena">
     <div class="profile">
       @if(isset($user->profileImg_url)) 
@@ -20,23 +20,43 @@
         <img src="/images/no-image.png" alt="プロフィール画像">
       @endif
       <div class="profile-secondary">
+        @if($user->id == \Auth::id())
         <div class="user-name">
           <p class="name">{{ $user->name }}</p>
-          @if($user->id == \Auth::id())
-            <div class="edit-link">
-              <a href="{{ route('users.edit', $user->id) }}"><i class="fas fa-user-cog"></i> プロフィール編集</a>
-            </div>
-          @endif
+          <div class="edit-link">
+            <a href="{{ route('users.edit', $user->id) }}"><i class="fas fa-user-cog"></i> プロフィール編集</a>
+          </div>
         </div>
         <div class="sub-content">
-          <p>{{ count($user->posts) }} posts</p>
-          <p>100 followers</p>
-          <p>130 following</p>
+          <p>{{ $posts_count }} posts</p>
+          <p><a href="{{ route('users.index', ['user_id' => $user->id, 'showfollowers' => true]) }}">{{ $defaultfollowers_count }} フォロワー</a></p>
+          <p><a href="{{ route('users.index', ['user_id' => $user->id, 'showfollowers' => false]) }}">{{ $defaultfollowing_count }} フォロー中</a></p>
         </div>
+        @else
+          <follow-component
+          :authuser-id="{{ json_encode($authuser_id) }}"
+          :authuser-name="{{ json_encode($authuser_name) }}"
+          :followuser-id="{{ json_encode($user->id) }}"
+          :followuser-name="{{ json_encode($user->name) }}"
+          :posts-count="{{ json_encode($posts_count) }}"
+          :default-Followed="{{ json_encode($defaultFollowed) }}"
+          :defaultfollowers-count="{{ json_encode($defaultfollowers_count) }}"
+          :defaultfollowing-count="{{ json_encode($defaultfollowing_count) }}"
+          ></follow-component>
+        @endif
         <p class="profile-content">{{ $user->profile_content }}</p>
       </div>
     </div>
-      <div class="user-posts">
+    @if(count($posts) == 0)
+    <div class="no-posts">
+      <p><i class="fas fa-info-circle fa-lg info-icon"></i> まだ投稿がありません</p>
+    </div>
+    @endif
+    @if(count($posts) > 1)
+    <div class="user-posts">
+    @else
+    <div class="user-post">
+    @endif
         @foreach($posts as $post)
         <?php 
           $newContent = '';

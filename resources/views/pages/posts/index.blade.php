@@ -5,22 +5,39 @@
   <h1>
       投稿一覧画面
   </h1>
+  <form class="search-form" action="{{ route('posts.search') }}" method="get">
+    <input class="search-input" name="search" type="text" placeholder="キーワード検索" v-model="searchItem" required>
+    <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+  </form>
 </div>
+@if (session('status'))
+  <div class="alert alert-success session-msg" role="alert">
+      {{ session('status') }}
+  </div>
+@endif
+@if (session('error'))
+  <div class="alert alert-success error-msg" role="alert">
+      {{ session('error') }}
+  </div>
+@endif
 
 <div class="indexPage">
-  @if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-    </div>
-  @endif
-
   @if(isset($tag_name))
-    <div class="tag-message">
+    <div class="message">
       <p><span>#{{ $tag_name }}</span> 関連の投稿数：{{ count($posts) }}件</p>
     </div>
   @endif
-  <div class="card-box">
-      
+  @if(isset($search_request))
+    <div class="message">
+      <p><span>{{ $search_request }}</span> の検索結果：{{ count($posts) }}件</p>
+    </div>
+  @endif
+
+  @if(count($posts) != 1)
+    <div class="card-box">
+  @else
+    <div class="card">
+  @endif
     @foreach($posts as $post)
     <?php 
       $newContent = '';

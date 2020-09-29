@@ -8,6 +8,7 @@ use App\Http\Requests\UserRequest;
 use Storage;
 use App\Post;
 use App\User;
+use App\Following;
 
 class UsersController extends Controller
 {
@@ -16,9 +17,45 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if(!User::where('id', $request->user_id)->exists()) {
+            \Session::flash('error', 'データがありません');
+            return redirect(route('posts.index'));
+        }
+        $authuser_id = \Auth::id();
+        $authuser_name = \Auth::user()->name;
+        $target_user = User::where('id', $request->user_id)->first();
+        if($request->showfollowers) {
+            $followings = Following::where('following_user_id', $request->user_id)->get();
+            $users = [];
+            foreach($followings as $following) {
+                $user = User::where('id', $following->user_id)->get();
+                array_push($users, $user);
+            }
+            return view('pages.users.index', [
+                'users' => $users,
+                'target_username' => $target_user->name,
+                'target_userid' => $request->user_id,
+                'authuser_id' => $authuser_id,
+                'authuser_name' => $authuser_name,
+                'showfollowers' => $request->showfollowers
+            ]);
+        }
+        else {
+            $followings = Following::where('user_id', $request->user_id)->get();
+            $users = [];
+            foreach($followings as $following) {
+                $user = User::where('id', $following->user_id)->get();
+                array_push($users, $user);
+            }
+            return view('pages.users.index', [
+                'users' => $users,
+                'authuser_id' => $authuser_id,
+                'authuser_name' => $authuser_name,
+                'showfollowers' => $request->showfollowers
+            ]);
+        }
     }
 
     /**
@@ -50,11 +87,31 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        $user->load('posts.likes', 'posts.comments');
+        $user->load('posts.likes', 'posts.comments', 'followers', 'followings');
         $posts = Post::latest()->where('user_id', $user->id)->get();
+
+        $authuser_id = \Auth::id();
+        $authuser_name = \Auth::user()->name;
+        $defaultFollowed = $user->followers->where('user_id', $authuser_id)->first();
+        if(empty($defaultFollowed)) {
+            $defaultFollowed = false;
+        }
+        else {
+            $defaultFollowed = true;
+        }
+        $defaultfollowers_count = count($user->followers);
+        $defaultfollowing_count = count($user->followings);
+        $posts_count = count($posts);
+
         return view('pages.users.show', [
             'user' => $user,
-            'posts' => $posts
+            'authuser_id' => $authuser_id,
+            'authuser_name' => $authuser_name,
+            'defaultfollowers_count' => $defaultfollowers_count,
+            'defaultfollowing_count' => $defaultfollowing_count,
+            'posts_count' => $posts_count,
+            'posts' => $posts,
+            'defaultFollowed' => $defaultFollowed
         ]);
     }
 
@@ -67,7 +124,7 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         if($user->id != \Auth::id()) {
-            \Session::flash('status', '不正なアクセスです');
+            \Session::flash('error', '不正なアクセスです');
             return redirect(route('posts.index'));
         }
 
@@ -139,6 +196,7 @@ class UsersController extends Controller
                     'profile_content' => $profile_content
                 ]);
                 $user->save();
+                \Session::flash('status', 'プロフィールを更新しました');
                 \DB::commit();
             } catch(\Throwable $e) {
                 \DB::rollback();
