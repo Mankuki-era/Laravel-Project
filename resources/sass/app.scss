@@ -626,6 +626,11 @@ html {
           p:not(:first-of-type) {
             margin-left: 15px;
           }
+          p {
+            a {
+              text-decoration: none;
+            }
+          }
         } 
       }
     }
@@ -649,7 +654,7 @@ html {
       gap: 10px;
     }
     .user-posts, .user-post {
-      margin-top: 80px;
+      margin: 80px auto 0;
       .card-item {
         box-shadow: 0 2px 5px rgba(0,0,0,0.26);
         padding-bottom: 5px;
@@ -801,6 +806,9 @@ html {
     .userCard-item:not(:first-of-type) {
       border-top: 2px solid #ddd;
     }
+    .myCard-item {
+      background: rgba(0, 153, 255, 0.062);
+    }
     .userCard-item {
       display: flex;
       align-items: center;
@@ -870,6 +878,9 @@ html {
           margin: 10px 0 7px;
           p {
             margin-bottom: 0;
+            a {
+              text-decoration: none;
+            }
           }
           p:not(:first-of-type) {
             margin-left: 15px;

@@ -260,7 +260,7 @@ class PostsController extends Controller
     }
 
     public function search(Request $request) {
-        $posts = Post::where('title', 'like', "%{$request->search}%")->orWhere('content', 'like', "%{$request->search}%")->get();
+        $posts = Post::latest()->where('title', 'like', "%{$request->search}%")->orWhere('content', 'like', "%{$request->search}%")->get();
         $search_request = $request->search;
 
         return view('pages.posts.index', [

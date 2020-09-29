@@ -5,9 +5,11 @@
   <h1>
     ユーザー一覧
   </h1>
+  @if($target_userid != $authuser_id)
   <ul class="back-link">
     <li><a href="{{ route('users.show', $target_userid) }}"><i class="fas fa-user"></i> {{ $target_username }}さんのページ</a></li>
   </ul>
+  @endif
 </div>
 @if (session('status'))
   <div class="alert alert-success session-msg" role="alert">
@@ -40,11 +42,28 @@
       $defaultfollowing_count = count(App\Following::where('user_id', $user[0]->id)->get());
       $posts_count = count(App\Post::where('user_id', $user[0]->id)->get());
     ?>
-    <div class="userCard-item">
+    @if($user[0]->id == $authuser_id)
+      <div class="userCard-item myCard-item">
+    @else
+      <div class="userCard-item">
+    @endif
       <div class="profile-img">
         <img src="{{ $user[0]->profileImg_url }}" alt="プロフィール画像">
       </div>
+      
       <div class="profile-secondary">
+        @if($user[0]->id == $authuser_id)
+        <div>
+          <div class="user-name">
+            <p class="name">{{ $authuser_name }}</p>
+          </div>
+          <div class="sub-content">
+            <p>{{ $posts_count}} posts</p>
+            <p><a href="{{ route('users.index', ['user_id' => $authuser_id, 'showfollowers' => true]) }}">{{ $defaultfollowers_count }} followers</a></p>
+            <p><a href="{{ route('users.index', ['user_id' => $authuser_id, 'showfollowers' => false]) }}">{{ $defaultfollowing_count }} following</a></p>
+          </div>
+        </div>
+        @else
         <follow-component
         :authuser-id="{{ json_encode($authuser_id) }}"
         :authuser-name="{{ json_encode($authuser_name) }}"
@@ -55,6 +74,7 @@
         :defaultfollowers-count="{{ json_encode($defaultfollowers_count) }}"
         :defaultfollowing-count="{{ json_encode($defaultfollowing_count) }}"
         ></follow-component>
+        @endif
         <p class="profile-content">{{ $user[0]->profile_content }}</p>
       </div>
     </div>

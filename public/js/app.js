@@ -37979,7 +37979,7 @@ var render = function() {
               href: "/users?user_id=" + _vm.followuserId + "&showfollowers=1"
             }
           },
-          [_vm._v(_vm._s(_vm.followers_count) + " フォロワー")]
+          [_vm._v(_vm._s(_vm.followers_count) + " followers")]
         )
       ]),
       _vm._v(" "),
@@ -37991,7 +37991,7 @@ var render = function() {
               href: "/users?user_id=" + _vm.followuserId + "&showfollowers=0"
             }
           },
-          [_vm._v(_vm._s(_vm.following_count) + " フォロー中")]
+          [_vm._v(_vm._s(_vm.following_count) + " following")]
         )
       ])
     ])

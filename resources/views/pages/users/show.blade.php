@@ -25,8 +25,8 @@
         </div>
         <div class="sub-content">
           <p>{{ $posts_count }} posts</p>
-          <p><a href="{{ route('users.index', ['user_id' => $user->id, 'showfollowers' => true]) }}">{{ $defaultfollowers_count }} フォロワー</a></p>
-          <p><a href="{{ route('users.index', ['user_id' => $user->id, 'showfollowers' => false]) }}">{{ $defaultfollowing_count }} フォロー中</a></p>
+          <p><a href="{{ route('users.index', ['user_id' => $user->id, 'showfollowers' => true]) }}">{{ $defaultfollowers_count }} followers</a></p>
+          <p><a href="{{ route('users.index', ['user_id' => $user->id, 'showfollowers' => false]) }}">{{ $defaultfollowing_count }} following</a></p>
         </div>
         @else
           <follow-component

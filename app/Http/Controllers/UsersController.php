@@ -52,6 +52,8 @@ class UsersController extends Controller
             return view('pages.users.index', [
                 'users' => $users,
                 'authuser_id' => $authuser_id,
+                'target_username' => $target_user->name,
+                'target_userid' => $request->user_id,
                 'authuser_name' => $authuser_name,
                 'showfollowers' => $request->showfollowers
             ]);

@@ -11,8 +11,8 @@
     </div>
     <div class="sub-content">
       <p>{{ postsCount }} posts</p>
-      <p><a :href="`/users?user_id=${followuserId}&showfollowers=1`">{{ followers_count }} フォロワー</a></p>
-      <p><a :href="`/users?user_id=${followuserId}&showfollowers=0`">{{ following_count }} フォロー中</a></p>
+      <p><a :href="`/users?user_id=${followuserId}&showfollowers=1`">{{ followers_count }} followers</a></p>
+      <p><a :href="`/users?user_id=${followuserId}&showfollowers=0`">{{ following_count }} following</a></p>
     </div>
   </div>
 </template>
