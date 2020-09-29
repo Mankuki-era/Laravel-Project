@@ -14,11 +14,7 @@
 <div class="user-showPage">
   <div class="userShow-contena">
     <div class="profile">
-      @if(isset($user->profileImg_url)) 
-        <img src="{{ $user->profileImg_url }}" alt="プロフィール画像">
-      @else
-        <img src="/images/no-image.png" alt="プロフィール画像">
-      @endif
+      <img src="{{ $user->profileImg_url }}" alt="プロフィール画像">
       <div class="profile-secondary">
         @if($user->id == \Auth::id())
         <div class="user-name">

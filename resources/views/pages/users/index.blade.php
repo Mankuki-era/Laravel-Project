@@ -42,11 +42,7 @@
     ?>
     <div class="userCard-item">
       <div class="profile-img">
-        @if(isset($user[0]->profileImg_url)) 
-          <img src="{{ $user[0]->profileImg_url }}" alt="プロフィール画像">
-        @else
-          <img src="/images/no-image.png" alt="プロフィール画像">
-        @endif
+        <img src="{{ $user[0]->profileImg_url }}" alt="プロフィール画像">
       </div>
       <div class="profile-secondary">
         <follow-component
