@@ -10923,7 +10923,7 @@ html {
 
 .pageTitle .search-form {
   position: relative;
-  width: 200px;
+  width: 150px;
   height: 35px;
 }
 
@@ -11843,7 +11843,7 @@ html {
 }
 
 .user-indexPage {
-  width: 70%;
+  width: 80%;
   margin: 80px auto 0;
 }
 
@@ -12093,6 +12093,10 @@ html {
 }
 
 @media (min-width: 550px) {
+  .pageTitle .search-form {
+    width: 200px;
+  }
+
   .loginPage .form-contena,
   .registerPage .form-contena,
   .createPage .form-contena,
@@ -12110,16 +12114,18 @@ html {
   }
 }
 
+@media (min-width: 665px) {
+  .user-indexPage {
+    width: 532px;
+  }
+}
+
 @media (min-width: 790px) {
   .user-showPage .userShow-contena .user-post {
     width: 553px;
   }
 
   .indexPage .card {
-    width: 553px;
-  }
-
-  .user-indexPage {
     width: 553px;
   }
 

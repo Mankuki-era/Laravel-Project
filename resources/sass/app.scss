@@ -28,7 +28,7 @@ html {
   }
   .search-form {
     position:relative;
-    width:200px;	
+    width:150px;	
     height: 35px;
     .search-input {
       height:100%;
@@ -778,7 +778,7 @@ html {
 }
 
 .user-indexPage {
-  width: 70%;
+  width: 80%;
   margin: 80px auto 0;
   h2 {
     background: #eee;
@@ -938,6 +938,11 @@ html {
 }
 
 @media (min-width:550px) {
+  .pageTitle {
+    .search-form {
+      width:200px;
+    }
+  }
   .loginPage, .registerPage, .createPage, .post-editPage, .profile-editPage {
     .form-contena {
       width: 500px;
@@ -945,6 +950,12 @@ html {
         display: flex;
       }
     }
+  }
+}
+
+@media (min-width:665px) {
+  .user-indexPage {
+    width: 532px;
   }
 }
 
@@ -960,9 +971,6 @@ html {
     .card {
       width: 553px;
     }
-  }
-  .user-indexPage {
-      width: 553px;
   }
   .user-indexPage {
     .usersCard-box {
