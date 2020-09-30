@@ -46,7 +46,7 @@ class UsersController extends Controller
             $followings = Following::where('user_id', $request->user_id)->get();
             $users = [];
             foreach($followings as $following) {
-                $user = User::where('id', $following->user_id)->get();
+                $user = User::where('id', $following->following_user_id)->get();
                 array_push($users, $user);
             }
             return view('pages.users.index', [
