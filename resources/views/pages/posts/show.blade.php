@@ -15,6 +15,7 @@
   <div class="card-box">
     <div class="card-item">
     <?php 
+      // 本文からタグ部分を削除する
       $newContent = '';
       if(isset($post->tags)) {
         $target = [];
@@ -35,6 +36,7 @@
       <div class="icons">
         <div class="left-icons">
           <div class="heart">
+            <!-- いいね機能 -->
             <like-component
             :post-id="{{ json_encode($post->id) }}"
             :user-id="{{ json_encode($user->id) }}"
@@ -43,6 +45,7 @@
             :index-page="{{ json_encode($index_page) }}"
             ></like-component>
           </div>
+          <!-- 投稿ユーザーと現在のユーザーが一緒の場合 -->
           @if($post->user == \Auth::user())
           <div class="edit">
             <a href="{{ route('posts.edit', $post->id) }}" class="edit-link">
@@ -64,6 +67,7 @@
       <div class="body">
         <div class="main-body">
           <h1>{{ $post->title }}</h1>
+          <!-- 改行を維持 -->
           @if(!empty($newContent))
             <p class="content">{!! nl2br(e(ltrim($newContent))) !!}</p>
           @else
@@ -87,6 +91,7 @@
       </div>
     </div>
 
+    <!-- コメント部分 -->
     <comment-component
       :post-id="{{ json_encode($post->id) }}"
       :user-id="{{ json_encode($user->id) }}"

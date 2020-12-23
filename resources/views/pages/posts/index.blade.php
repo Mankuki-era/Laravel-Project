@@ -40,23 +40,29 @@
   @endif
     @foreach($posts as $post)
     <?php 
-      $newContent = '';
-      if(isset($post->tags)) {
-        $target = [];
-        foreach($post->tags as $tag) {
-          array_push($target, '#' . $tag->tag_name);
-        }
-        $newContent = str_replace($target, '', $post->content);
-      }
+      // ユーザーがログインしている場合
+      if(Auth::check()){
 
-      $user = \Auth::user();
-      $defaultCount = count($post->likes);
-      $defaultLiked = $post->likes->where('user_id', $user->id)->first();
-      if(empty($defaultLiked)) {
-          $defaultLiked = false;
-      }
-      else {
-          $defaultLiked = true;
+        // 本文からタグを削除する
+        $newContent = '';
+        if(isset($post->tags)) {
+          $target = [];
+          foreach($post->tags as $tag) {
+            array_push($target, '#' . $tag->tag_name);
+          }
+          $newContent = str_replace($target, '', $post->content);
+        }
+        
+        // 現在のユーザーがそれぞれの投稿をいいねしているかを判定
+        $user = \Auth::user();
+        $defaultCount = count($post->likes);
+        $defaultLiked = $post->likes->where('user_id', $user->id)->first();
+        if(empty($defaultLiked)) {
+            $defaultLiked = false;
+        }
+        else {
+            $defaultLiked = true;
+        }
       }
     ?>
     <div class="card-item">
@@ -74,13 +80,23 @@
       <div class="icons">
         <div class="left-icons">
           <div class="heart">
-            <like-component
-              :post-id="{{ json_encode($post->id) }}"
-              :user-id="{{ json_encode($user->id) }}"
-              :default-Count="{{ json_encode($defaultCount) }}"
-              :default-Liked="{{ json_encode($defaultLiked) }}"
-              :index-page="{{ json_encode($index_page) }}"
-            ></like-component>
+            <!-- ログインしている場合 -->
+            @if(Auth::check())
+              <!-- いいね機能 -->
+              <like-component
+                :post-id="{{ json_encode($post->id) }}"
+                :user-id="{{ json_encode($user->id) }}"
+                :default-Count="{{ json_encode($defaultCount) }}"
+                :default-Liked="{{ json_encode($defaultLiked) }}"
+                :index-page="{{ json_encode($index_page) }}"
+              ></like-component>
+            @else　<!-- ログインしていない場合 -->
+            <button>
+              <a href="{{ route('login') }}">
+                <i class="fas fa-heart fa-lg heart-icon"></i><span class="good">{{ count($post->likes) }}</span>
+              </a>
+            </button>
+            @endif
           </div>
           @if($post->user == \Auth::user())
           <div class="edit">

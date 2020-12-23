@@ -10,6 +10,7 @@ class Tag extends Model
         'tag_name'
     ];
 
+    // リレーション
     public function posts() {
         return $this->belongsToMany('App\Post')->withTimeStamps();
     }

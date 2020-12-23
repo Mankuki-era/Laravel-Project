@@ -37,6 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // リレーション
     public function posts()
     {
         return $this->hasMany('App\Post', 'user_id', 'id');

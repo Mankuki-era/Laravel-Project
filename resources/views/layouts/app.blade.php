@@ -27,11 +27,12 @@
         <header>
             @include('header')
         </header>
-        
         <main style="margin-top: 50px;">
             @yield('content')
         </main>
-
+        <footer>
+            @include('footer')
+        </footer>
     </div>
 </body>
 

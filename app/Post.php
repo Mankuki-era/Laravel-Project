@@ -10,6 +10,7 @@ class Post extends Model
         'user_id', 'title', 'content', 'img_url'
     ];
 
+    // リレーション
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');

@@ -7,10 +7,11 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-html {
-  padding-bottom: 40px;
+main {
+  min-height: calc(100vh - 100px);
 }
 
+// タイトル部分
 .pageTitle {
   background: #5bc8ac;
   height: 80px;
@@ -41,7 +42,7 @@ html {
     }
     .search-btn {
       position:absolute;
-      top: 50%;
+      top: 58%;
       right: 0;
       background:none;
       color:#666;
@@ -68,6 +69,7 @@ html {
   }
 }
 
+// セッションメッセージ部分
 .session-msg {
   margin: 0;
   text-align: center;
@@ -75,6 +77,7 @@ html {
   font-weight: bold;
 }
 
+// エラーメッセージ部分
 .error-msg {
   margin: 0;
   text-align: center;
@@ -83,6 +86,7 @@ html {
   font-weight: bold;
 }
 
+// ログイン・新規登録画面
 .loginPage, .registerPage {
   .form-contena {
     width: 320px;
@@ -102,9 +106,25 @@ html {
         opacity: 0.5;
       }
     }
+    .testUser {
+      width: 300px;
+      margin: 10px auto 0;
+      text-align: center;
+      border: 2px solid #3490dc;
+      border-radius: 10px;
+      padding: 5px;
+      h1 {
+        font-size: 15px;
+        font-weight: bold;
+      }
+      p {
+        margin: 0;
+      }
+    }
   }
 }
 
+// 投稿一覧画面
 .indexPage {
   margin: 80px auto 0;
   width: 70%;
@@ -202,6 +222,9 @@ html {
                 color: #aaa;
                 padding-left: 5px;
               }
+              a {
+                text-decoration: none;
+              }
             }
           }
           .edit {
@@ -296,6 +319,7 @@ html {
   }
 }
 
+// 投稿作成・編集画面
 .createPage, .post-editPage {
   .form-contena {
     width: 350px;
@@ -318,6 +342,7 @@ html {
   }
 }
 
+// 投稿詳細画面
 .showPage {
   .card-box {
     width: 80%;
@@ -554,6 +579,7 @@ html {
   }
 }
 
+// ユーザー詳細画面
 .user-showPage {
   .userShow-contena {
     width: 70%;
@@ -756,6 +782,7 @@ html {
   }
 }
 
+// プロフィール編集画面
 .profile-editPage {
   .form-contena {
     width: 350px;
@@ -777,6 +804,7 @@ html {
   }
 }
 
+// ユーザー一覧表示画面
 .user-indexPage {
   width: 80%;
   margin: 80px auto 0;
@@ -891,6 +919,21 @@ html {
   }
 }
 
+// フッター
+footer {
+  .footer {
+    background: #e6d72a;
+    height: 50px;
+    p {
+      font-weight: bold;
+      line-height: 50px;
+      text-align: center;
+      margin: 0;
+    }
+  }
+}
+
+// いいねボタンのアニメーション
 @keyframes heartAnimation {
   0% {
     /* アイコンサイズをもとのより小さくする */
@@ -914,6 +957,7 @@ html {
   }
 }
 
+// フォローボタンのアニメーション
 @keyframes followAnimation {
   0% {
     /* アイコンサイズをもとのより小さくする */
@@ -937,6 +981,9 @@ html {
   }
 }
 
+// レスポンシブ対応-----------------------------------------------------------------------------------------
+
+// 550px〜
 @media (min-width:550px) {
   .pageTitle {
     .search-form {
@@ -953,12 +1000,14 @@ html {
   }
 }
 
+// 665px〜
 @media (min-width:665px) {
   .user-indexPage {
     width: 532px;
   }
 }
 
+// 790px〜
 @media (min-width:790px) {
   .user-showPage {
     .userShow-contena {
@@ -1006,6 +1055,7 @@ html {
   }
 }
 
+// 800px〜
 @media (min-width:800px) {
   .showPage {
     .card-box {
@@ -1022,6 +1072,7 @@ html {
   }
 }
 
+// 970px〜
 @media (min-width:970px) {
   .user-showPage {
     .userShow-contena {

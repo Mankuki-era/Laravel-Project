@@ -10899,8 +10899,8 @@ a.text-dark:focus {
   }
 }
 
-html {
-  padding-bottom: 40px;
+main {
+  min-height: calc(100vh - 100px);
 }
 
 .pageTitle {
@@ -10939,7 +10939,7 @@ html {
 
 .pageTitle .search-form .search-btn {
   position: absolute;
-  top: 50%;
+  top: 58%;
   right: 0;
   background: none;
   color: #666;
@@ -11007,6 +11007,27 @@ html {
 .loginPage .form-contena .form-items input:not(:focus),
 .registerPage .form-contena .form-items input:not(:focus) {
   opacity: 0.5;
+}
+
+.loginPage .form-contena .testUser,
+.registerPage .form-contena .testUser {
+  width: 300px;
+  margin: 10px auto 0;
+  text-align: center;
+  border: 2px solid #3490dc;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.loginPage .form-contena .testUser h1,
+.registerPage .form-contena .testUser h1 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.loginPage .form-contena .testUser p,
+.registerPage .form-contena .testUser p {
+  margin: 0;
 }
 
 .indexPage {
@@ -11153,6 +11174,11 @@ html {
 .indexPage .card .card-item .icons .left-icons .heart button .good {
   color: #aaa;
   padding-left: 5px;
+}
+
+.indexPage .card-box .card-item .icons .left-icons .heart button a,
+.indexPage .card .card-item .icons .left-icons .heart button a {
+  text-decoration: none;
 }
 
 .indexPage .card-box .card-item .icons .left-icons .edit,
@@ -11978,6 +12004,18 @@ html {
 
 .user-indexPage .usersCard-box .userCard-item .profile-secondary .sub-content p:not(:first-of-type) {
   margin-left: 15px;
+}
+
+footer .footer {
+  background: #e6d72a;
+  height: 50px;
+}
+
+footer .footer p {
+  font-weight: bold;
+  line-height: 50px;
+  text-align: center;
+  margin: 0;
 }
 
 @-webkit-keyframes heartAnimation {

@@ -63,6 +63,11 @@
                 </div>
             </div>
         </form>
+        <div class="testUser">
+            <h1>テスト用アカウント</h1>
+            <p>メールアドレス：test1@gmail.com</p>
+            <p>パスワード：sasaking</p>
+        </div>
     </div>
 </div>
 @endsection

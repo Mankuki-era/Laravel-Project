@@ -10,6 +10,7 @@ class Comment extends Model
         'user_id', 'post_id', 'content'
     ];
 
+    // リレーション
     public function post()
     {
         return $this->belongsTo('App\Post', 'post_id', 'id');

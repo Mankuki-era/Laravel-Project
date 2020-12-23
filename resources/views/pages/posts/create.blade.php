@@ -14,11 +14,11 @@
 <div class="createPage">
   @if ($errors->any())
     <div class="alert alert-danger">
-    <ul>
+      <ul>
         @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
+          <li>{{ $error }}</li>
         @endforeach
-    </ul>
+      </ul>
     </div>
   @endif
   <div class="form-contena">
@@ -28,7 +28,6 @@
         <label for="title">タイトル</label>
         <div class="form-items">
           <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autofocus>
-          
           @error('title')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -41,7 +40,6 @@
         <label for="content">本文</label>
         <div class="form-items">
           <textarea id="content" class="form-control @error('content') is-invalid @enderror" name="content" rows="5" required>{{ old('content') }}</textarea>
-          
           @error('content')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
