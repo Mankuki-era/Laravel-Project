@@ -91,9 +91,9 @@
                 :index-page="{{ json_encode($index_page) }}"
               ></like-component>
             @else　<!-- ログインしていない場合 -->
-            <button>
+            <button class="nouser-btn">
               <a href="{{ route('login') }}">
-                <i class="fas fa-heart fa-lg heart-icon"></i><span class="good">{{ count($post->likes) }}</span>
+                <i class="fas fa-heart heart-icon"></i><span class="good">{{ count($post->likes) }}</span>
               </a>
             </button>
             @endif

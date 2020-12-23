@@ -205,6 +205,7 @@ main {
           display: flex;
           .heart {
             padding-right: 10px;
+            width: 200px;
             button {
               border: none;
               outline: none;
@@ -222,6 +223,8 @@ main {
                 color: #aaa;
                 padding-left: 5px;
               }
+            }
+            button.nouser-btn {  
               a {
                 text-decoration: none;
               }
@@ -921,6 +924,7 @@ main {
 
 // フッター
 footer {
+  margin-top: 50px;
   .footer {
     background: #e6d72a;
     height: 50px;

@@ -11147,6 +11147,7 @@ main {
 .indexPage .card-box .card-item .icons .left-icons .heart,
 .indexPage .card .card-item .icons .left-icons .heart {
   padding-right: 10px;
+  width: 200px;
 }
 
 .indexPage .card-box .card-item .icons .left-icons .heart button,
@@ -11176,8 +11177,8 @@ main {
   padding-left: 5px;
 }
 
-.indexPage .card-box .card-item .icons .left-icons .heart button a,
-.indexPage .card .card-item .icons .left-icons .heart button a {
+.indexPage .card-box .card-item .icons .left-icons .heart button.nouser-btn a,
+.indexPage .card .card-item .icons .left-icons .heart button.nouser-btn a {
   text-decoration: none;
 }
 
@@ -12004,6 +12005,10 @@ main {
 
 .user-indexPage .usersCard-box .userCard-item .profile-secondary .sub-content p:not(:first-of-type) {
   margin-left: 15px;
+}
+
+footer {
+  margin-top: 50px;
 }
 
 footer .footer {
