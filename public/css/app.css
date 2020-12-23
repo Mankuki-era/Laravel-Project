@@ -11147,7 +11147,6 @@ main {
 .indexPage .card-box .card-item .icons .left-icons .heart,
 .indexPage .card .card-item .icons .left-icons .heart {
   padding-right: 10px;
-  width: 200px;
 }
 
 .indexPage .card-box .card-item .icons .left-icons .heart button,
@@ -11175,6 +11174,12 @@ main {
 .indexPage .card .card-item .icons .left-icons .heart button .good {
   color: #aaa;
   padding-left: 5px;
+}
+
+.indexPage .card-box .card-item .icons .left-icons .heart button.nouser-btn,
+.indexPage .card .card-item .icons .left-icons .heart button.nouser-btn {
+  display: block;
+  margin: 0 auto 0 0;
 }
 
 .indexPage .card-box .card-item .icons .left-icons .heart button.nouser-btn a,

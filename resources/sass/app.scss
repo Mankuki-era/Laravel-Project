@@ -205,7 +205,6 @@ main {
           display: flex;
           .heart {
             padding-right: 10px;
-            width: 200px;
             button {
               border: none;
               outline: none;
@@ -225,6 +224,8 @@ main {
               }
             }
             button.nouser-btn {  
+              display: block;
+              margin: 0 auto 0 0;
               a {
                 text-decoration: none;
               }
